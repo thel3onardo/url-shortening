@@ -1,7 +1,7 @@
 <nav class="nav-container">
     <div class="nav-container__title-menu">
         <div class="nav-container__title-menu__logo">
-            <img src="../../static/images/logo.svg" alt="Shortly logo">
+            <img src="/images/logo.svg" alt="Shortly logo">
         </div>
         <ul>
             <li>
