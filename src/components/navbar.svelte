@@ -27,9 +27,7 @@
 
 <style lang="sass">
     .nav-container
-        margin: 0 auto
-        padding: 2em 0
-        max-width: 1200px
+        padding: 2em 3em
         
         display: flex
         justify-content: space-between
