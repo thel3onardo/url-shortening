@@ -104,7 +104,7 @@
         transform: translateY(-60px)
 
         button
-            padding: 1em 2.5em
+            padding: 1.25em 2.5em
             margin-left: 1rem
             background-color: hsl(180, 66%, 49%)
             border: none
@@ -117,7 +117,13 @@
             width: 70%
             input
                 width: 100%
-                padding: 1em
+                padding: 1.25em
                 border-radius: .5rem
                 border: none
+
+                &::placeholder
+                    color: hsl(257, 7%, 63%)
+
+                &:active, &:focus
+                    outline: none
 </style>
