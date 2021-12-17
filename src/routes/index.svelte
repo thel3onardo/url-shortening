@@ -1,5 +1,6 @@
 <script>
     import Navbar from '../components/navbar.svelte';  
+    import StatisticsItem from '../components/statistics-item.svelte'
     import '../styles/global.scss'
 
     let header_img_src = '../../static/images/illustration-working.svg'
@@ -29,6 +30,18 @@
                 <input type="text" placeholder="Shorten a link here...">
             </form>
             <button>Shorten it</button>
+    </section>
+    <section>
+        <div class="statistics-section__container">
+            <h1>Advanced Statistics</h1>
+            <p>Track how your links are performing across the web with our advanced statistics dashboard.</p>
+            <div class="statistics-section__items">
+                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content."></StatisticsItem>
+
+                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content."></StatisticsItem>
+
+                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content."></StatisticsItem>
+            </div>
         </div>
     </section>
 </div>
@@ -86,7 +99,7 @@
             width: 50%
 
     section
-        &:nth-of-type(1n)
+        &:nth-of-type(1n), &:nth-of-type(2n)
             width: 100%
             background-color: hsl(257, 27%, 95%)
 
@@ -126,4 +139,24 @@
 
                 &:active, &:focus
                     outline: none
+
+    .statistics-section__container
+        max-width: 1600px
+        margin: 0 auto
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        h1
+            color: hsl(0, 0%, 25%)
+            font-size: 2.3rem
+            padding: .3em 0
+
+        p
+            color: hsl(257, 7%, 63%)
+            text-align: center
+            width: 40%
+
+        .statistics-section__items
+            display: flex
 </style>
