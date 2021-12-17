@@ -26,9 +26,7 @@
 </nav>
 
 <style lang="sass">
-    .nav-container
-        padding: 2em 3em
-        
+    .nav-container    
         display: flex
         justify-content: space-between
 

@@ -9,37 +9,49 @@
     <title>Shortly</title>
 </svelte:head>
 
-<header>
-    <Navbar/>
-    <div class="header-content">
-        <div class="header-content__text">
-            <h1>More than just shorter links</h1>
-            <p>Build your brand's recognition and get detailed insights on how your links are performing.</p>
-            <button>Get started</button>
+<div class="content">
+    <header>
+        <Navbar/>
+        <div class="header-content">
+            <div class="header-content__text">
+                <h1>More than just shorter links</h1>
+                <p>Build your brand's recognition and get detailed insights on how your links are performing.</p>
+                <button>Get started</button>
+            </div>
+            <div class="header-content__image">
+                <img src={header_img_src} alt="Woman working at a computer.">
+            </div>
         </div>
-        <div class="header-content__image">
-            <img src={header_img_src} alt="Woman working at a computer.">
+    </header>
+    <section>
+        <div class="shorten-link__container">
+            <form>
+                <input type="text" placeholder="Shorten a link here...">
+            </form>
+            <button>Shorten it</button>
         </div>
-    </div>
-</header>
+    </section>
+</div>
 
 <style lang="sass">
-    header
+    .content
         width: 100%
+    
+    header
         max-width: 1600px
         margin: 0 auto
-        height: 100vh
-        max-height: 800px
+        height: 800px
+        overflow: hidden
+        padding: 2em 3em
         
         background-color: #fff
     
     .header-content
         width: 100%
-        height: 100%
-        padding: 0 3em
         display: flex
         align-items: center
         justify-content: space-between
+        padding: 4em 0
 
         &__text
             color: hsl(260, 8%, 14%)
@@ -72,4 +84,40 @@
 
         &__image
             width: 50%
+
+    section
+        &:nth-of-type(1n)
+            width: 100%
+            background-color: hsl(257, 27%, 95%)
+
+    .shorten-link__container
+        width: 80vw
+        max-width: 1200px
+        margin: 0 auto
+        padding: 2.5rem 2rem
+        border-radius: .5rem
+        background-color: hsl(257, 27%, 26%)
+        background-image: url('../../static/images/bg-shorten-desktop.svg')
+        display: flex
+        justify-content: center
+        align-items: center
+        transform: translateY(-60px)
+
+        button
+            padding: 1em 2.5em
+            margin-left: 1rem
+            background-color: hsl(180, 66%, 49%)
+            border: none
+            border-radius: .5rem
+            color: #fff
+            font-weight: 600
+            cursor: pointer
+
+        form
+            width: 70%
+            input
+                width: 100%
+                padding: 1em
+                border-radius: .5rem
+                border: none
 </style>
