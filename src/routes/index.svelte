@@ -4,6 +4,7 @@
     import '../styles/global.scss'
 
     let header_img_src = '../../static/images/illustration-working.svg'
+    let logo = '../../static/images/logo.svg'
 </script>
 
 <svelte:head>
@@ -36,14 +37,61 @@
             <h1>Advanced Statistics</h1>
             <p>Track how your links are performing across the web with our advanced statistics dashboard.</p>
             <div class="statistics-section__items">
-                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content."></StatisticsItem>
+                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content." item_num='1'></StatisticsItem>
 
-                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content."></StatisticsItem>
+                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content." item_num='2'></StatisticsItem>
 
-                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content."></StatisticsItem>
+                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content." item_num='3'></StatisticsItem>
             </div>
         </div>
     </section>
+    <section>
+        <h1>Boost your links today</h1>
+        <button>Get Started</button>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer__logo-container">
+                <img src={logo} alt="Shortly logo">
+            </div>
+            <div class="footer__content-container">
+                <div class="footer__links-container">
+                    <div class="footer__links-container__list">
+                        <p>Features</p>
+                        <ul>
+                            <li><a href="ww">Link shortening</a></li>
+                            <li><a href="ww">Link shortening</a></li>
+                            <li><a href="ww">Link shortening</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__links-container__list">
+                        <p>Features</p>
+                        <ul>
+                            <li><a href="ww">Link shortening</a></li>
+                            <li><a href="ww">Link shortening</a></li>
+                            <li><a href="ww">Link shortening</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__links-container__list">
+                        <p>Features</p>
+                        <ul>
+                            <li><a href="ww">Link shortening</a></li>
+                            <li><a href="ww">Link shortening</a></li>
+                            <li><a href="ww">Link shortening</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__icons-container">
+                    <ul>
+                        <li><img src="../../static/images/icon-facebook.svg" alt="uepa"></li>
+                        <li><img src="../../static/images/icon-twitter.svg" alt="uepa"></li>
+                        <li><img src="../../static/images/icon-instagram.svg" alt="uepa"></li>
+                        <li><img src="../../static/images/icon-pinterest.svg" alt="uepa"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 
 <style lang="sass">
@@ -103,6 +151,34 @@
             width: 100%
             background-color: hsl(257, 27%, 95%)
 
+        &:nth-of-type(3n)
+            width: 100%
+            background-color: hsl(257, 27%, 26%)
+            background-image: url('../../static/images/bg-boost-desktop.svg')
+            background-repeat: no-repeat
+            background-size: cover
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: center
+            padding: 2.5em 0
+
+            h1
+                font-size: 2.3rem
+                font-weight: 600
+                color: #fff
+                
+            button
+                background-color: hsl(180, 66%, 49%)
+                color: #fff
+                font-weight: 600
+                font-size: 1.2rem
+                border-radius: 2rem
+                border: none
+                cursor: pointer
+                padding: .65em 2em
+                margin-top: 1em
+
     .shorten-link__container
         width: 80vw
         max-width: 1200px
@@ -111,6 +187,8 @@
         border-radius: .5rem
         background-color: hsl(257, 27%, 26%)
         background-image: url('../../static/images/bg-shorten-desktop.svg')
+        background-repeat: no-repeat
+        background-size: cover
         display: flex
         justify-content: center
         align-items: center
@@ -159,4 +237,68 @@
 
         .statistics-section__items
             display: flex
+            position: relative
+            margin: 8em 0
+
+            &:before
+                content: ''
+                position: absolute
+                width: 100%
+                height: 100%
+                backgroud-color: hsl(180, 66%, 49%)
+                z-index: 50
+
+    footer
+        background-color: hsl(260, 8%, 14%)
+        padding: 5em 2em
+
+    .footer-container
+        width: 100%
+        max-width: 1600px
+        margin: 0 auto
+        display: flex
+        justify-content: space-between
+
+    .footer__logo-container
+        img
+            filter: invert(1)
+
+    .footer__content-container
+        display: flex
+
+    .footer__links-container
+        display: flex
+
+        &__list
+            margin: 0 2.5em
+
+            p
+                font-weight: 600
+                color: #fff
+                padding-bottom: 1em
+            
+            a
+                text-decoration: none
+                color: hsl(0, 0%, 75%)
+                margin: .3em 0
+
+            ul
+                list-style: none
+                
+                li 
+                    a
+                    margin-bottom: 0.5em
+
+    .footer__icons-container
+        display: flex
+        height: auto
+        padding: 0 1em
+
+        ul
+            list-style: none 
+            li
+                float: left
+                
+                img
+                    margin: 0 1em
 </style>

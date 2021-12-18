@@ -1,15 +1,15 @@
 <script>
-    let [icon_url, title, description] = '';
-    export { icon_url, title, description }
+    let [icon_url, title, description, item_num] = '';
+    export { icon_url, title, description, item_num }
 </script>
 
-<main>
-    <div class="statistic-item">
+<div class="{`item_${item_num}`} statistic-item">
+    <div class="statistic-item__img-container">
         <img src={icon_url} alt="teste">
-        <h1>{title}</h1>
-        <p>{description}</p>
     </div>
-</main>
+    <h1>{title}</h1>
+    <p>{description}</p>
+</div>
 
 <style lang="sass">
     .statistic-item
@@ -22,24 +22,44 @@
         padding-bottom: 2em
         max-width: 100%
 
-        img
-            max-width: 65px
-            position: relative
-
-            &:before
-                content: "dqqwdqd"
-                position: absolute
-                width: 100%
-                height: 100%
-                transform: scale(1.5)
-                background-color: hsl(257, 27%, 26%)
-                border-radius: 50%
-                z-index: 30
-
         h1
             color: hsl(0, 0%, 30%)
-            padding: .7em 0
+            padding-top: 1em
+            padding-bottom: .7em
 
         p
             color: hsl(0, 0%, 75%)
+
+    .statistic-item__img-container
+        max-width: 45px
+        position: relative
+        display: flex
+        justify-content: center
+        align-items: center
+        margin: 0 1.2em
+        transform: translateY(-20px)
+
+        img
+            width: 100%
+            position: relative
+            z-index: 2
+
+        &:before
+            content: ""
+            position: absolute
+            width: 180%
+            height: 180%
+            background-color: hsl(257, 27%, 26%)
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3)
+            border-radius: 50%
+            z-index: 1
+
+    .item_1
+        transform: translateY(0)
+
+    .item_2
+        transform: translateY(45px)
+
+    .item_3
+        transform: translateY(90px)
 </style>
