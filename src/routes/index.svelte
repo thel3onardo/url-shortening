@@ -1,10 +1,16 @@
 <script>
     import Navbar from '../components/navbar.svelte';  
+import ShortenLinkContainer from '../components/shorten-link-container.svelte';
     import StatisticsItem from '../components/statistics-item.svelte'
     import '../styles/global.scss'
 
     let header_img_src = '../../static/images/illustration-working.svg'
     let logo = '../../static/images/logo.svg'
+    let statistics_items = [
+        { icon_url: '../../static/images/icon-brand-recognition.svg', title: 'Brand Recognition', description: "Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content.", item_num: '1'}, 
+        { icon_url: '../../static/images/icon-detailed-records.svg', title: 'Detailed Records', description: "Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.", item_num: '2'},
+        { icon_url: '../../static/images/icon-fully-customizable.svg', title: 'Fully Customizable', description: "Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.", item_num: '3'}
+    ]
 </script>
 
 <svelte:head>
@@ -26,22 +32,16 @@
         </div>
     </header>
     <section>
-        <div class="shorten-link__container">
-            <form>
-                <input type="text" placeholder="Shorten a link here...">
-            </form>
-            <button>Shorten it</button>
+        <ShortenLinkContainer />
     </section>
     <section>
         <div class="statistics-section__container">
             <h1>Advanced Statistics</h1>
             <p>Track how your links are performing across the web with our advanced statistics dashboard.</p>
             <div class="statistics-section__items">
-                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content." item_num='1'></StatisticsItem>
-
-                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content." item_num='2'></StatisticsItem>
-
-                <StatisticsItem icon_url="../../static/images/icon-brand-recognition.svg" title="Brand Recognition" description="Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content." item_num='3'></StatisticsItem>
+            {#each statistics_items as { icon_url, description, title, item_num }}
+                <StatisticsItem icon_url={icon_url} title={title} description={description} item_num={item_num}></StatisticsItem>
+            {/each}
             </div>
         </div>
     </section>
@@ -161,7 +161,7 @@
             flex-direction: column
             align-items: center
             justify-content: center
-            padding: 2.5em 0
+            padding: 6em 0
 
             h1
                 font-size: 2.3rem
@@ -178,45 +178,6 @@
                 cursor: pointer
                 padding: .65em 2em
                 margin-top: 1em
-
-    .shorten-link__container
-        width: 80vw
-        max-width: 1200px
-        margin: 0 auto
-        padding: 2.5rem 2rem
-        border-radius: .5rem
-        background-color: hsl(257, 27%, 26%)
-        background-image: url('../../static/images/bg-shorten-desktop.svg')
-        background-repeat: no-repeat
-        background-size: cover
-        display: flex
-        justify-content: center
-        align-items: center
-        transform: translateY(-60px)
-
-        button
-            padding: 1.25em 2.5em
-            margin-left: 1rem
-            background-color: hsl(180, 66%, 49%)
-            border: none
-            border-radius: .5rem
-            color: #fff
-            font-weight: 600
-            cursor: pointer
-
-        form
-            width: 70%
-            input
-                width: 100%
-                padding: 1.25em
-                border-radius: .5rem
-                border: none
-
-                &::placeholder
-                    color: hsl(257, 7%, 63%)
-
-                &:active, &:focus
-                    outline: none
 
     .statistics-section__container
         max-width: 1600px
