@@ -1,15 +1,21 @@
 <script>
+    import axios from 'axios';
+
     let url = '';
     
     function inputValidation() {
         if (url.length > 0) {
-            return shortenLink();
+            return shortenLink(url);
         };
         console.log('input inválido');
     };
 
-    function shortenLink(a) {
-        console.log(url);
+    async function shortenLink(link) {
+        const res = await axios.get(`https://api.shrtco.de/v2/shorten?url=${link}`);
+        
+        if (res.status === 201) {
+            console.log(res.data);
+        }
     };
 </script>
 
