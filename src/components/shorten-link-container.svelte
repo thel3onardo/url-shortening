@@ -34,7 +34,7 @@
         padding: 2.5rem 2rem
         border-radius: .5rem
         background-color: hsl(257, 27%, 26%)
-        background-image: url('../../static/images/bg-shorten-desktop.svg')
+        background-image: url('../../images/bg-shorten-desktop.svg')
         background-repeat: no-repeat
         background-size: cover
         display: flex

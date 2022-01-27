@@ -1,15 +1,15 @@
 <script>
     import Navbar from '../components/navbar.svelte';  
-import ShortenLinkContainer from '../components/shorten-link-container.svelte';
-    import StatisticsItem from '../components/statistics-item.svelte'
-    import '../styles/global.scss'
+    import ShortenLinkContainer from '../components/shorten-link-container.svelte';
+    import StatisticsItem from '../components/statistics-item.svelte';
+    import Footer from '../components/footer.svelte';
+    import '../styles/global.scss';
 
-    let header_img_src = '../../static/images/illustration-working.svg'
-    let logo = '../../static/images/logo.svg'
+    let header_img_src = '../../images/illustration-working.svg'
     let statistics_items = [
-        { icon_url: '../../static/images/icon-brand-recognition.svg', title: 'Brand Recognition', description: "Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content.", item_num: '1'}, 
-        { icon_url: '../../static/images/icon-detailed-records.svg', title: 'Detailed Records', description: "Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.", item_num: '2'},
-        { icon_url: '../../static/images/icon-fully-customizable.svg', title: 'Fully Customizable', description: "Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.", item_num: '3'}
+        { icon_url: '../../images/icon-brand-recognition.svg', title: 'Brand Recognition', description: "Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content.", item_num: '1'}, 
+        { icon_url: '../../images/icon-detailed-records.svg', title: 'Detailed Records', description: "Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.", item_num: '2'},
+        { icon_url: '../../images/icon-fully-customizable.svg', title: 'Fully Customizable', description: "Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.", item_num: '3'}
     ]
 </script>
 
@@ -49,49 +49,7 @@ import ShortenLinkContainer from '../components/shorten-link-container.svelte';
         <h1>Boost your links today</h1>
         <button>Get Started</button>
     </section>
-    <footer>
-        <div class="footer-container">
-            <div class="footer__logo-container">
-                <img src={logo} alt="Shortly logo">
-            </div>
-            <div class="footer__content-container">
-                <div class="footer__links-container">
-                    <div class="footer__links-container__list">
-                        <p>Features</p>
-                        <ul>
-                            <li><a href="ww">Link shortening</a></li>
-                            <li><a href="ww">Link shortening</a></li>
-                            <li><a href="ww">Link shortening</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__links-container__list">
-                        <p>Features</p>
-                        <ul>
-                            <li><a href="ww">Link shortening</a></li>
-                            <li><a href="ww">Link shortening</a></li>
-                            <li><a href="ww">Link shortening</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer__links-container__list">
-                        <p>Features</p>
-                        <ul>
-                            <li><a href="ww">Link shortening</a></li>
-                            <li><a href="ww">Link shortening</a></li>
-                            <li><a href="ww">Link shortening</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="footer__icons-container">
-                    <ul>
-                        <li><img src="../../static/images/icon-facebook.svg" alt="uepa"></li>
-                        <li><img src="../../static/images/icon-twitter.svg" alt="uepa"></li>
-                        <li><img src="../../static/images/icon-instagram.svg" alt="uepa"></li>
-                        <li><img src="../../static/images/icon-pinterest.svg" alt="uepa"></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <Footer />
 </div>
 
 <style lang="sass">
@@ -208,58 +166,4 @@ import ShortenLinkContainer from '../components/shorten-link-container.svelte';
                 height: 100%
                 backgroud-color: hsl(180, 66%, 49%)
                 z-index: 50
-
-    footer
-        background-color: hsl(260, 8%, 14%)
-        padding: 5em 2em
-
-    .footer-container
-        width: 100%
-        max-width: 1600px
-        margin: 0 auto
-        display: flex
-        justify-content: space-between
-
-    .footer__logo-container
-        img
-            filter: invert(1)
-
-    .footer__content-container
-        display: flex
-
-    .footer__links-container
-        display: flex
-
-        &__list
-            margin: 0 2.5em
-
-            p
-                font-weight: 600
-                color: #fff
-                padding-bottom: 1em
-            
-            a
-                text-decoration: none
-                color: hsl(0, 0%, 75%)
-                margin: .3em 0
-
-            ul
-                list-style: none
-                
-                li 
-                    a
-                    margin-bottom: 0.5em
-
-    .footer__icons-container
-        display: flex
-        height: auto
-        padding: 0 1em
-
-        ul
-            list-style: none 
-            li
-                float: left
-                
-                img
-                    margin: 0 1em
 </style>
