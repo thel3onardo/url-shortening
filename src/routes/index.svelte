@@ -10,7 +10,12 @@
         { icon_url: '../../images/icon-brand-recognition.svg', title: 'Brand Recognition', description: "Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content.", item_num: '1'}, 
         { icon_url: '../../images/icon-detailed-records.svg', title: 'Detailed Records', description: "Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.", item_num: '2'},
         { icon_url: '../../images/icon-fully-customizable.svg', title: 'Fully Customizable', description: "Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.", item_num: '3'}
-    ]
+    ];
+
+    function scrollToShortenLinkSection() {
+        const distanceFromTop = document.getElementById('shorten-link-section').offsetTop;
+        window.scrollTo({ top: distanceFromTop / 1.5, behavior: 'smooth' });
+    };
 </script>
 
 <svelte:head>
@@ -24,14 +29,14 @@
             <div class="header-content__text">
                 <h1>More than just shorter links</h1>
                 <p>Build your brand's recognition and get detailed insights on how your links are performing.</p>
-                <button>Get started</button>
+                <button on:click={scrollToShortenLinkSection}>Get started</button>
             </div>
             <div class="header-content__image">
                 <img src={header_img_src} alt="Woman working at a computer.">
             </div>
         </div>
     </header>
-    <section>
+    <section id="shorten-link-section">
         <ShortenLinkContainer />
     </section>
     <section>
@@ -47,7 +52,7 @@
     </section>
     <section>
         <h1>Boost your links today</h1>
-        <button>Get Started</button>
+        <button on:click={scrollToShortenLinkSection}>Get Started</button>
     </section>
     <Footer />
 </div>
