@@ -1,5 +1,16 @@
 <script>
-    let logo = '../../images/logo.svg'
+    let logo = '../../images/logo.svg';
+    let link_lists = [
+        { container_name: 'Features', links: [{url: 'www.google.com', text: 'Google'}, {url: 'www.google.com', text: 'Google'}, {url: 'www.google.com', text: 'Google'}] },
+        { container_name: 'Resources', links: [{url: 'www.google.com', text: 'Google'}, {url: 'www.google.com', text: 'Google'}, {url: 'www.google.com', text: 'Google'}] },
+        { container_name: 'Company', links: [{url: 'www.google.com', text: 'Google'}, {url: 'www.google.com', text: 'Google'}, {url: 'www.google.com', text: 'Google'}] },
+    ];
+    let social_media = [
+        { icon_path: '../../images/icon-facebook.svg', alt: 'facebook icon', url: 'https://www.youtube.com/watch?v=6ONRf7h3Mdk&list=RD89hJPNSNlFM&index=3' },
+        { icon_path: '../../images/icon-twitter.svg', alt: 'twitter icon', url: 'https://www.youtube.com/watch?v=6ONRf7h3Mdk&list=RD89hJPNSNlFM&index=3' },
+        { icon_path: '../../images/icon-instagram.svg', alt: 'instagram icon', url: 'https://www.youtube.com/watch?v=6ONRf7h3Mdk&list=RD89hJPNSNlFM&index=3' },
+        { icon_path: '../../images/icon-pinterest.svg', alt: 'pinterest icon', url: 'https://www.youtube.com/watch?v=6ONRf7h3Mdk&list=RD89hJPNSNlFM&index=3' },
+    ]
 </script>
 
 <footer>
@@ -9,37 +20,24 @@
         </div>
         <div class="footer__content-container">
             <div class="footer__links-container">
+                {#each link_lists as { container_name, links }}
                 <div class="footer__links-container__list">
-                    <p>Features</p>
+                    <p>{container_name}</p>
                     <ul>
-                        <li><a href="ww">Link shortening</a></li>
-                        <li><a href="ww">Link shortening</a></li>
-                        <li><a href="ww">Link shortening</a></li>
+                        {#each links as link}
+                        <li><a href={link.url}>{link.text}</a></li>
+                        {/each}
                     </ul>
                 </div>
-                <div class="footer__links-container__list">
-                    <p>Features</p>
-                    <ul>
-                        <li><a href="ww">Link shortening</a></li>
-                        <li><a href="ww">Link shortening</a></li>
-                        <li><a href="ww">Link shortening</a></li>
-                    </ul>
-                </div>
-                <div class="footer__links-container__list">
-                    <p>Features</p>
-                    <ul>
-                        <li><a href="ww">Link shortening</a></li>
-                        <li><a href="ww">Link shortening</a></li>
-                        <li><a href="ww">Link shortening</a></li>
-                    </ul>
-                </div>
+                {/each}
             </div>
             <div class="footer__icons-container">
                 <ul>
-                    <li><img src="../../images/icon-facebook.svg" alt="uepa"></li>
-                    <li><img src="../../images/icon-twitter.svg" alt="uepa"></li>
-                    <li><img src="../../images/icon-instagram.svg" alt="uepa"></li>
-                    <li><img src="../../images/icon-pinterest.svg" alt="uepa"></li>
+                    {#each social_media as { icon_path, alt, url }}
+                    <li>
+                        <a href={url}><img src={icon_path} alt={alt}></a>
+                    </li>
+                    {/each}
                 </ul>
             </div>
         </div>
@@ -84,13 +82,13 @@
                 list-style: none
                 
                 li 
-                    a
-                        margin-bottom: 0.5em
+                    margin-bottom: .5rem
 
     .footer__icons-container
         display: flex
         height: auto
-        padding: 0 1em
+        padding-right: 1em
+        padding-left: 12rem
 
         ul
             list-style: none 
@@ -99,4 +97,8 @@
                 
                 img
                     margin: 0 1em
+                    cursor: pointer
+
+                    &:hover
+                        opacity: .8
 </style>
