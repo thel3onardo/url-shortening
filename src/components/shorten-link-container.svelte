@@ -1,18 +1,21 @@
 <script>
+    import { fade } from 'svelte/transition';
     import axios from 'axios';
     import ShortenedLink from './shortened-link.svelte';
     import Spinner from './spinner.svelte';
-
+    
     let url = '';
+    let invalidInput = false;
     let loading = false;
-    let shortenedLinks = [{ original_link: 'twitter.com', shortened_link: 'tuiter.com' }];
+    let shortenedLinks = [];
     
     function shortenLink() {
         //input field validation
         if (url.length > 0) {
+            invalidInput = false;
             return getShortenedLink(url);
         };
-        console.log('input inválido');
+        return invalidInput = true;
     };
     async function getShortenedLink(link) {
         loading = true;
@@ -21,7 +24,7 @@
 
             if (res.data.ok) {
                 const api_data = res.data.result;
-                shortenedLinks.push({ original_link: api_data.original_link, shortened_link: api_data.short_link});
+                shortenedLinks.push({ original_link: api_data.original_link, shortened_link: api_data.short_link });
                 shortenedLinks = shortenedLinks;
                 return loading = false;
             }
@@ -35,15 +38,20 @@
 
 <div class="shorten-link__container">
     <form on:submit|preventDefault={shortenLink}>
-        <input type="text" placeholder="Shorten a link here..." bind:value={url}>
-    </form>
-    <button on:click={shortenLink}>
-        {#if loading}
-            <Spinner />
-        {:else}
-            <span>Shorten it</span>
+        <input type="text" placeholder="Shorten a link here..." bind:value={url} class={invalidInput ? 'invalid-input' : ''}>
+        {#if invalidInput}
+            <p transition:fade>Please add a link</p>
         {/if}
-    </button>
+    </form>
+    <div>
+        <button on:click={shortenLink}>
+            {#if loading}
+                <Spinner />
+            {:else}
+                <span>Shorten it</span>
+            {/if}
+        </button>
+    </div>
 </div>
 <div class="shortened-links_container">
     {#each shortenedLinks as { original_link, shortened_link }}
@@ -64,11 +72,10 @@
         background-size: cover
         display: flex
         justify-content: center
-        align-items: center
         transform: translateY(-60px)
 
         button
-            padding: 1.25em 2.5em
+            padding: 1rem 2.5em
             margin-left: 1rem
             background-color: hsl(180, 66%, 49%)
             border: none
@@ -83,6 +90,10 @@
 
         form
             width: 70%
+
+            p
+                color: hsl(0, 87%, 67%)
+
             input
                 width: 100%
                 padding: 1.25em
@@ -94,6 +105,9 @@
 
                 &:active, &:focus
                     outline: none
+
+            .invalid-input
+                border: 2px solid hsl(0, 87%, 67%)
 
     .shortened-links_container
         width: 80vw
