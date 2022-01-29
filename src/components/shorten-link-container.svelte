@@ -1,29 +1,54 @@
 <script>
     import axios from 'axios';
+    import ShortenedLink from './shortened-link.svelte';
+    import Spinner from './spinner.svelte';
 
     let url = '';
+    let loading = false;
+    let shortenedLinks = [{ original_link: 'twitter.com', shortened_link: 'tuiter.com' }];
     
-    function inputValidation() {
+    function shortenLink() {
+        //input field validation
         if (url.length > 0) {
-            return shortenLink(url);
+            return getShortenedLink(url);
         };
         console.log('input inválido');
     };
+    async function getShortenedLink(link) {
+        loading = true;
+        try {
+            const res = await axios.get(`https://api.shrtco.de/v2/shorten?url=${link}`);
 
-    async function shortenLink(link) {
-        const res = await axios.get(`https://api.shrtco.de/v2/shorten?url=${link}`);
-        
-        if (res.status === 201) {
-            console.log(res.data);
+            if (res.data.ok) {
+                const api_data = res.data.result;
+                shortenedLinks.push({ original_link: api_data.original_link, shortened_link: api_data.short_link});
+                shortenedLinks = shortenedLinks;
+                return loading = false;
+            }
+        }
+        catch (err) {
+            loading = false;
+            return console.error(err);
         }
     };
 </script>
 
 <div class="shorten-link__container">
-    <form>
+    <form on:submit|preventDefault={shortenLink}>
         <input type="text" placeholder="Shorten a link here..." bind:value={url}>
     </form>
-    <button on:click={inputValidation}>Shorten it</button>
+    <button on:click={shortenLink}>
+        {#if loading}
+            <Spinner />
+        {:else}
+            <span>Shorten it</span>
+        {/if}
+    </button>
+</div>
+<div class="shortened-links_container">
+    {#each shortenedLinks as { original_link, shortened_link }}
+        <ShortenedLink original_link={original_link} shortened_link={shortened_link} />
+    {/each}
 </div>
 
 <style lang="sass">
@@ -69,5 +94,11 @@
 
                 &:active, &:focus
                     outline: none
+
+    .shortened-links_container
+        width: 80vw
+        max-width: 1200px
+        margin: 0 auto
+        padding-bottom: 5rem
 
 </style>
