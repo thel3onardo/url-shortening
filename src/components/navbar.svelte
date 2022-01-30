@@ -33,10 +33,13 @@
         </button>
     </div>
     <div class="nav-container__burger-menu" on:click={() => menu_is_opened = true}>
-        <Fa icon={faBars} size="2x" color="hsl(0, 0%, 75%)"></Fa>
+        <Fa icon={faBars} size="3x" color="hsl(0, 0%, 75%)"></Fa>
     </div>
     {#if menu_is_opened}
         <div class="nav-container__mobile-menu" transition:slide|local>
+            <div class="nav-container__mobile-menu__close-icon" on:click={() => menu_is_opened = false}>
+                <Fa icon={faTimes} size="2x"></Fa>
+            </div>
             <ul>
                 {#each links as {route_path, anchor_text}}
                     <li transition:slide|>
@@ -65,7 +68,6 @@
             padding: 2em 3em
 
         &__mobile-menu
-            display: flex
             align-items: center
             justify-content: center
             height: 100vh
@@ -76,6 +78,11 @@
 
             ul
                 list-style: none
+                display: flex
+                flex-direction: column
+                align-items: center
+                justify-content: center
+                height: 100%
 
                 li
                     text-align: center
@@ -95,6 +102,12 @@
                         text-align: center
                         color: hsl(260, 8%, 14%)
 
+            &__close-icon
+                position: absolute
+                right: 0
+                padding: 1rem 3rem
+                cursor: pointer
+
     .nav-container__title-menu
         display: flex
         padding: 2em 3em
@@ -113,6 +126,8 @@
 
                 &:hover
                     color: hsl(260, 8%, 14%)
+
+                    
 
     .nav-container__title-menu__logo
         display: flex
