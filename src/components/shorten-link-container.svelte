@@ -26,6 +26,7 @@
                 const api_data = res.data.result;
                 shortenedLinks.push({ original_link: api_data.original_link, shortened_link: api_data.short_link });
                 shortenedLinks = shortenedLinks;
+                url = '';
                 return loading = false;
             }
         }

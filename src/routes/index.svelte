@@ -23,8 +23,8 @@
 </svelte:head>
 
 <div class="content">
+    <Navbar/>
     <header>
-        <Navbar/>
         <div class="header-content">
             <div class="header-content__text">
                 <h1>More than just shorter links</h1>
