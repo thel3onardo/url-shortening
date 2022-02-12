@@ -1,7 +1,7 @@
 <script>
     import Fa from 'sveltejs-fontawesome';
     import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-    import { slide } from 'svelte/transition';
+    import { scale, fade } from 'svelte/transition';
 
     let menu_is_opened = false;
     let links = [
@@ -33,21 +33,23 @@
         </button>
     </div>
     <div class="nav-container__burger-menu" on:click={() => menu_is_opened = true}>
-        <Fa icon={faBars} size="3x" color="hsl(0, 0%, 75%)"></Fa>
+        <Fa icon={faBars} size="2x" color="hsl(0, 0%, 75%)"></Fa>
     </div>
     {#if menu_is_opened}
-        <div class="nav-container__mobile-menu" transition:slide|local>
+        <div class="nav-container__mobile-menu" in:scale|local out:fade="{{ duration: 200 }}">
             <div class="nav-container__mobile-menu__close-icon" on:click={() => menu_is_opened = false}>
                 <Fa icon={faTimes} size="2x"></Fa>
             </div>
             <ul>
                 {#each links as {route_path, anchor_text}}
-                    <li transition:slide|>
+                    <li>
                         <a href={route_path}>{anchor_text}</a>
                     </li>
                 {/each}
                 <li>
-                    <button class="bg-cyan">Login</button>
+                    <a href="/">
+                        <button class="bg-cyan">Login</button>
+                    </a>
                 </li>
                 <li>
                     <button class="bg-dark-gray">Sign-in</button>
@@ -65,7 +67,10 @@
 
         &__burger-menu
             display: none
-            padding: 2em 3em
+            margin: 2em 3em
+
+            @media screen and (max-width: 600px)
+                margin: 2em 1.5em
 
         &__mobile-menu
             align-items: center
@@ -127,7 +132,8 @@
                 &:hover
                     color: hsl(260, 8%, 14%)
 
-                    
+        @media screen and (max-width: 600px)
+            padding: 2em 1.5em
 
     .nav-container__title-menu__logo
         display: flex

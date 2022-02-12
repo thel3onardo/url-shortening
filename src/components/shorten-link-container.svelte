@@ -110,6 +110,21 @@
             .invalid-input
                 border: 2px solid hsl(0, 87%, 67%)
 
+        @media screen and (max-width: 600px)
+            margin-top: 5rem
+            flex-direction: column
+            padding: 1.5rem
+
+            form
+                width: 100%
+
+            button
+                width: 100%
+                margin-top: 1rem
+                margin-left: 0
+                padding: .8rem 0
+                font-size: 1.2rem
+
     .shortened-links_container
         width: 80vw
         max-width: 1200px

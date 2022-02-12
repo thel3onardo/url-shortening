@@ -60,6 +60,7 @@
 <style lang="sass">
     .content
         width: 100%
+        overflow: hidden
     
     header
         max-width: 1600px
@@ -67,8 +68,11 @@
         height: 800px
         overflow: hidden
         padding: 2em 3em
-        
         background-color: #fff
+        
+        @media screen and (max-width: 600px)
+            padding: 0
+            overflow: visible
     
     .header-content
         width: 100%
@@ -76,6 +80,10 @@
         align-items: center
         justify-content: space-between
         padding: 4em 0
+
+        @media screen and (max-width: 600px)
+            flex-direction: column-reverse
+            padding: 2em 0 
 
         &__text
             color: hsl(260, 8%, 14%)
@@ -106,8 +114,29 @@
                     background-color: hsl(180, 66%, 49%, .5)
                     cursor: pointer
 
+            @media screen and (max-width: 600px)
+                width: 100%
+                text-align: center
+                padding: 0 1rem
+
+                p
+                    text-align: center
+                    width: 100%
+
+                h1
+                    font-size: 2.8rem
+                    line-height: 3rem
+                    margin: 2rem 0
+
         &__image
             width: 50%
+
+            @media screen and (max-width: 600px)
+                width: 100%
+
+                img
+                    max-width: 125%
+                    transform: translateX(2rem)
 
     section
         &:nth-of-type(1n), &:nth-of-type(2n)
@@ -163,6 +192,9 @@
             display: flex
             position: relative
             margin: 8em 0
+
+            @media screen and (max-width: 600px)
+                flex-direction: column
 
             &:before
                 content: ''

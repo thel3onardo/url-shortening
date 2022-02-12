@@ -44,7 +44,7 @@
     </div>
 </footer>
 <style lang="sass">
-     footer
+    footer
         background-color: hsl(260, 8%, 14%)
         padding: 5em 2em
 
@@ -55,6 +55,9 @@
         display: flex
         justify-content: space-between
 
+        @media screen and (max-width: 600px)
+            flex-direction: column
+
     .footer__logo-container
         img
             filter: invert(1)
@@ -62,8 +65,13 @@
     .footer__content-container
         display: flex
 
+        @media screen and (max-width: 600px)
+            flex-direction: column
+
     .footer__links-container
         display: flex
+        @media screen and (max-width: 600px)
+            flex-direction: column
 
         &__list
             margin: 0 2.5em

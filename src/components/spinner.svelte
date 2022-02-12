@@ -1,15 +1,15 @@
-<script></script>
 <div class="loader">Loading...</div>
+
 <style lang="css">
 .loader {
   color: #ffffff;
-  font-size: 20px;
+  font-size: 14px;
   text-indent: -9999em;
   overflow: hidden;
-  width: 1em;
-  height: 1em;
+  width: 1.05em;
+  height: 1.05em;
   border-radius: 50%;
-  margin: 0px auto;
+  margin: .2em auto;
   position: relative;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);

@@ -1,5 +1,5 @@
 <script>
-    import { fade } from 'svelte/transition';
+    import { slide } from 'svelte/transition';
 
     let original_link, shortened_link;
     let copyButtonText = 'Copy';
@@ -11,7 +11,7 @@
     };
 </script>
 
-<div class="shortened-link" transition:fade|local>
+<div class="shortened-link" transition:slide|local>
     <p>{original_link}</p>
     <div>
         <p on:click={copyToClipboard}>{shortened_link}</p>
